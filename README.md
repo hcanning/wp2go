@@ -1,7 +1,7 @@
 # wp2go
 WordPress for Unis 
 
-Video Walkthrough: http://u.pc.cd/wKA
+Video Walkthrough: https://u.pcloud.link/publink/show?code=wKA
 
 See all the component code at: [wp-content/themes/understrap-child-1.2.0/page-templates/inc](https://github.com/hcanning/wp2go/tree/main/wp-content/themes/understrap-child-1.2.0/page-templates/inc)
 
