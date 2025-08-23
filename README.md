@@ -1,9 +1,12 @@
 # wp2go
 WordPress for Unis 
 
+Demo Page:
+https://portfolio-wp1.hcann.com/
+
 Base Theme: Understrap with Child Theme - https://github.com/understrap/understrap-child - Bootstrap 5 enabled
 
-Video Walkthrough: https://u.pcloud.link/publink/show?code=wKA
+Video Walkthrough: https://u.pcloud.link/publink/show?code=XZt6ns5ZLvoo90Nu6LzDksvo8bd6C8WDEs6V
 
 See all the component code at: [wp-content/themes/understrap-child-1.2.0/page-templates/inc](https://github.com/hcanning/wp2go/tree/main/wp-content/themes/understrap-child-1.2.0/page-templates/inc)
 
