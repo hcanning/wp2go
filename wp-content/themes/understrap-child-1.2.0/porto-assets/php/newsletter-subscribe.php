@@ -22,13 +22,13 @@ use \DrewM\MailChimp\MailChimp;
 
 // Step 1 - Set the apiKey - How get your Mailchimp API KEY - http://kb.mailchimp.com/article/where-can-i-find-my-api-key
 
-$apiKey 	= 'fe03f8efbb77b0d562aef9e545e9f7e6-us10';
+$apiKey 	= 'YOURKEY';
 
 
 
 // Step 2 - Set the listId - How to get your Mailchimp LIST ID - http://kb.mailchimp.com/article/how-can-i-find-my-list-id
 
-$listId 	= 'ea51c1dd72';
+$listId 	= 'YOURID';
 
 
 
