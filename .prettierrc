@@ -1,0 +1,8 @@
+{
+  "overrides": [
+    {
+      "files": "*.min.js",
+      "options": { "parser": "babel" }  // Or just skip by using null formatter
+    }
+  ]
+}

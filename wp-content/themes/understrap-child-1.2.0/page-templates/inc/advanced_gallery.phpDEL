@@ -1,0 +1,87 @@
+<?php
+$show = get_sub_field('show_hide');
+if($show == 'show') :
+?>      
+    <?php $uid = get_row_index(); ?>
+    <?php if (get_sub_field('menu_or_dropdown') == "dropdown") : ?> 
+    <?php //below ul needs to exist to preserve functionality - d-none - added to class ?>
+    <ul class="d-none nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio<?php echo $uid; ?>" data-option-key="filter" data-plugin-options="{'layoutMode': 'masonry', 'filter': '*', 'useHash': false}">
+        <li class="nav-item active" data-option-value="*"><a class="nav-link text-2-5 text-uppercase active" href="#">Show All 1</a></li>
+            <?php foreach($cats as $cat){
+            echo '<li class="nav-item" data-option-value=".' . $cat['value'] . '"><a class="nav-link text-2-5 text-uppercase" href="#">' . $cat['label'] . '</a></li>';
+            }
+            ?>
+    </ul>
+    <div class="changeFilterDiv text-center">
+    <select class="change-filters-dropdown" data-sort-id="portfolio<?php echo $uid; ?>"> 
+        <option value="*">Show All</option>
+        <?php	foreach($cats as $cat){
+                echo '<option value="' . $cat['value'] . '">' . $cat['label'] . ' </option>';
+            }
+        ?>
+        </select>
+        <?php //allow multiple galleries on same page to sort independently - use the_row_index for dynamic ids -see custom.js ?>
+        
+    </div>
+    <?php else :?>
+        
+            <?php $uid = (rand(1,100000)); ?>
+            <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio<?php echo $uid;?>" data-option-key="filter" data-plugin-options="{'layoutMode': 'masonry', 'filter': '*', 'useHash': false}">
+            <li class="nav-item active" data-option-value="*"><a class="nav-link text-2-5 text-uppercase active" href="#">Show All 2</a></li>
+        <?php foreach($cats as $cat){
+                echo '<li class="nav-item" data-option-value=".' . $cat['value'] . '"><a class="nav-link text-2-5 text-uppercase" href="#">' . $cat['label'] . '</a></li>';
+            }
+        ?>
+        </ul>
+    <?php endif; ?>
+    <?php //full width ?>
+    <?php if (get_sub_field('full_or_fixed') == "fixed") : ?>  <div class="container py-2"> <?php endif; ?>
+    
+        <div class="sort-destination-loader sort-destination-loader-loaded">
+                <div class="row portfolio-list sort-destination" style="<?php echo get_sub_field('border_color') ? "border: 1px solid " . get_sub_field('border_color') : "border: none" ?>; background: <?php the_sub_field('page_section_bg'); ?>;" data-sort-id="portfolio<?php echo $uid;?>">
+                <?php if( have_rows('img_group') ): ?>
+                            <?php while( have_rows('img_group') ) : the_row();?>
+                                <?php if( have_rows('img_repeater') ): ?>
+                                    <?php while( have_rows('img_repeater') ) : the_row();?>
+                                    <?php 
+                                    $img = get_sub_field('img');
+                                    $link = get_sub_field('img_link');
+                                    $format_string = get_sub_field('img_cat');
+                                    ?>
+                                            <div class="col-md-6 col-lg-1-5 isotope-item m-0 p-0 <?php echo implode( ' ', $format_string ); ?>" style="position: absolute; left: 0px; top: 0px;">
+                                                <div class="portfolio-item m-1">
+                            <?php if( $link ): ?><a href="<?php echo esc_url($link['url']); ?>"><?php endif; ?>
+                                                        <span class="thumb-info thumb-info-centered-info thumb-info-no-borders border-radius-0">
+                                                                <span class="thumb-info-wrapper border-radius-0">
+                                                                <img src="<?php echo esc_url($img['url']); ?>" class="img-fluid border-radius-0" alt="<?php echo esc_attr($img['alt']); ?>">
+                                                                <span class="thumb-info-title">
+                                                                    <?php if ($img['title']) : ?>
+                                                                        <span class="thumb-info-inner"><?php echo esc_attr($img['title']); ?></span>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($img['caption']) : ?>
+                                                                    <span class="thumb-info-type"><?php echo esc_attr($img['caption']); ?></span>
+                                                                    <?php endif; ?>
+                                                                </span>
+                                                                <span class="thumb-info-action">
+                                                                    <span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+                            <?php if( $link ): ?></a><?php endif; ?>
+                                                </div>
+                                            </div>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+                <div class="bounce-loader">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+            </div>
+        </div>
+    <?php if (get_sub_field('full_or_fixed') == "fixed") : ?>  </div> <?php endif; ?>
+<?php
+endif;
+?>

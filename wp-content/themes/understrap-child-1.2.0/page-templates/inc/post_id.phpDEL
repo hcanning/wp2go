@@ -1,0 +1,122 @@
+<?php
+// Generate a unique ID for this block
+$uniq_id = uniqid('block_');
+$type = get_sub_field('cards_or_carousel');
+$min_height = get_sub_field('min_height');
+// Use the unique ID in variable names (via variable variables)
+${'post_ids_' . $uniq_id} = (function() {
+    $posts = get_sub_field('post_id');
+
+    if (!$posts) {
+        return array();
+    }
+
+    if (is_string($posts)) {
+        $posts = array_map('trim', explode(',', $posts));
+    }
+
+    if (is_array($posts)) {
+        $ids = array();
+        foreach ($posts as $post) {
+            $post_id = is_object($post) ? $post->ID : intval($post);
+            if ($post_id) {
+                $ids[] = $post_id;
+            }
+        }
+        return $ids;
+    }
+
+    return array();
+})();
+
+// Short alias for convenience
+$post_ids_var = ${'post_ids_' . $uniq_id};
+
+if (!empty($post_ids_var)) :
+
+    $args = [
+        'post_type'      => 'post',
+        'post_status'    => 'publish',
+        'posts_per_page' => 9,
+        'post__in'       => $post_ids_var,
+        'orderby'        => 'post__in',
+    ];
+
+    ${'posts_query_' . $uniq_id} = new WP_Query($args);
+
+    if (${'posts_query_' . $uniq_id}->have_posts()) :
+        ?>
+        <h2>Selected Posts</h2>
+    <?php if($type == 'cards') : ?>
+        <div class="row">
+            <?php while (${'posts_query_' . $uniq_id}->have_posts()) : ${'posts_query_' . $uniq_id}->the_post(); ?>
+                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                    <div class="card mb-4" style="min-height: <?php echo $min_height;?>px">
+                        <?php the_post_thumbnail('medium', ['alt' => get_the_title(), 'class' => 'card-img-top']); ?>
+                        <div class="card-body">
+                            <h4 class="card-title mb-1 text-4 font-weight-bold"><?php the_title(); ?></h4>
+                            <p class="card-text mb-2 pb-1">
+                                <?php
+                                $excerpt = wp_strip_all_tags(get_the_excerpt());
+                                if (strlen($excerpt) > 100) {
+                                    $excerpt = substr($excerpt, 0, 100);
+                                    $excerpt = rtrim($excerpt, " \t\n\r\0\x0B,.") . '...';
+                                }
+                                echo esc_html($excerpt);
+                                ?>
+                            </p>
+                            <a href="<?php the_permalink(); ?>" class="read-more text-color-primary font-weight-semibold text-2">
+                                Read More <i class="fas fa-angle-right position-relative top-1 ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        </div>
+
+    <?php else : ?>
+
+      
+
+             <div class="owl-carousel owl-theme show-nav-title" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 2}, '979': {'items': 3}, '1199': {'items': 3}}, 'loop': false, 'autoHeight': true, 'margin': 10, 'nav': true, 'dots': false}">
+            <?php while (${'posts_query_' . $uniq_id}->have_posts()) : ${'posts_query_' . $uniq_id}->the_post(); ?>
+                    <div class="card" style="min-height: <?php echo $min_height;?>px">
+                        <?php the_post_thumbnail('medium', ['alt' => get_the_title(), 'class' => 'card-img-top']); ?>
+                        <div class="card-body">
+                            <h4 class="card-title mb-1 text-4 font-weight-bold"><?php the_title(); ?></h4>
+                            <p class="card-text mb-2 pb-1">
+                                <?php
+                                $excerpt = wp_strip_all_tags(get_the_excerpt());
+                                if (strlen($excerpt) > 100) {
+                                    $excerpt = substr($excerpt, 0, 100);
+                                    $excerpt = rtrim($excerpt, " \t\n\r\0\x0B,.") . '...';
+                                }
+                                echo esc_html($excerpt);
+                                ?>
+                            </p>
+                            <a href="<?php the_permalink(); ?>" class="read-more text-color-primary font-weight-semibold text-2">
+                                Read More <i class="fas fa-angle-right position-relative top-1 ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+            <?php endwhile; ?>
+        </div>
+
+
+    <?php endif; ?>
+
+        <?php
+        the_posts_pagination([
+            'prev_text' => __('Previous', 'text-domain'),
+            'next_text' => __('Next', 'text-domain'),
+        ]);
+    else :
+        echo '<p>' . __('No posts found for the given IDs.', 'text-domain') . '</p>';
+    endif;
+
+    wp_reset_postdata();
+
+else :
+    echo 'No post IDs found!';
+endif;
+?>

@@ -1,0 +1,4 @@
+22-08-2025 15:12:01 - ERROR - 8.9.3 - 5.8 MB/512 MB -  > Open tracking request for unexistant subscriber
+22-08-2025 15:17:46 - ERROR - 8.9.3 - 5.8 MB/512 MB -  > Open tracking request for unexistant subscriber
+22-08-2025 15:19:15 - ERROR - 8.9.3 - 5.8 MB/512 MB -  > Open tracking request for unexistant subscriber
+22-08-2025 16:11:08 - ERROR - 8.9.3 - 10.2 MB/512 MB -  > Open tracking request for unexistant subscriber

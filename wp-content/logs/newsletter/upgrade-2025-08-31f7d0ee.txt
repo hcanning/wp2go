@@ -1,0 +1,38 @@
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.9 MB/512 MB - hcanning > Start upgrade from 0.0.0
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.8 MB/512 MB - hcanning > Array
+(
+    [`wp_newsletter_emails`] => Created table `wp_newsletter_emails`
+)
+
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.8 MB/512 MB - hcanning > Array
+(
+    [`wp_newsletter_sent`] => Created table `wp_newsletter_sent`
+)
+
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.9 MB/512 MB - hcanning > Array
+(
+    [`wp_newsletter`] => Created table `wp_newsletter`
+)
+
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.8 MB/512 MB - hcanning > Array
+(
+    [`wp_newsletter_user_logs`] => Created table `wp_newsletter_user_logs`
+)
+
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.8 MB/512 MB - hcanning > Array
+(
+    [`wp_newsletter_user_meta`] => Created table `wp_newsletter_user_meta`
+)
+
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.8 MB/512 MB - hcanning > Array
+(
+    [`wp_newsletter_stats`] => Created table `wp_newsletter_stats`
+)
+
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.8 MB/512 MB - hcanning > Array
+(
+    [`wp_newsletter_logs`] => Created table `wp_newsletter_logs`
+)
+
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.8 MB/512 MB - hcanning > Backing up options of 0.0.0
+22-08-2025 13:59:06 - INFO  - 8.9.3 - 6.9 MB/512 MB - hcanning > End

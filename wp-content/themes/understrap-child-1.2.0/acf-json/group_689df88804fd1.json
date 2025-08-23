@@ -1,0 +1,237 @@
+{
+    "key": "group_689df88804fd1",
+    "title": "06 - Reusable Fields",
+    "fields": [
+        {
+            "key": "field_689df881c4454",
+            "label": "Show\/Hide",
+            "name": "show_hide",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hide",
+            "ui": 1
+        },
+        {
+            "key": "field_689df904b8314",
+            "label": "Theme Color",
+            "name": "theme_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary #1A3C5A (Deep Navy)",
+                "secondary": "Secondary #8B1E3F (Burgundy)",
+                "tertiary": "Tertiary #D4A017 (Golden Ochre)",
+                "quaternary": "Quaternary #E8ECEF (Soft Gray)",
+                "light": "Light #FFFFFF (White)",
+                "dark": "Dark #333333 (Dark Gray)",
+                "success": "Green #28a745",
+                "danger": "Red #dc3545"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_689e157633a52",
+            "label": "Background Color",
+            "name": "bg_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary #1A3C5A (Deep Navy)",
+                "secondary": "Secondary #8B1E3F (Burgundy)",
+                "tertiary": "Tertiary #D4A017 (Golden Ochre)",
+                "quaternary": "Quaternary #E8ECEF (Soft Gray)",
+                "light": "Light #FFFFFF (White)",
+                "dark": "Dark #333333 (Dark Gray)"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_68a0ebd94de50",
+            "label": "Button Color",
+            "name": "button_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary #1A3C5A (Deep Navy)",
+                "secondary": "Secondary #8B1E3F (Burgundy)",
+                "tertiary": "Tertiary #D4A017 (Golden Ochre)",
+                "quaternary": "Quaternary #E8ECEF (Soft Gray)",
+                "light": "Light #FFFFFF (White)",
+                "dark": "Dark #333333 (Dark Gray)"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_689e158033a53",
+            "label": "Text Color",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary #1A3C5A (Deep Navy)",
+                "secondary": "Secondary #8B1E3F (Burgundy)",
+                "tertiary": "Tertiary #D4A017 (Golden Ochre)",
+                "quaternary": "Quaternary #E8ECEF (Soft Gray)",
+                "light": "Light #FFFFFF (White)",
+                "dark": "Dark #333333 (Dark Gray)"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_689dfc7b49d10",
+            "label": "Image",
+            "name": "img",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "uploadedTo",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": 3500,
+            "max_height": 3500,
+            "max_size": "0.5",
+            "mime_types": "png,jpg",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_689e5d569e6e5",
+            "label": "Color Swatch",
+            "name": "brand_color",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "acf-swatch-field",
+                "id": ""
+            },
+            "choices": {
+                "#1A3C5A": "Navy Blue",
+                "#8B1E3F": "Burgundy",
+                "#D4A017": "Gold",
+                "#C91732": "Red",
+                "#E8ECEF": "Light Gray",
+                "#FFFFFF": "White",
+                "#333333": "Dark Gray"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Reusable fields across website",
+    "show_in_rest": 0,
+    "modified": 1755786811
+}
