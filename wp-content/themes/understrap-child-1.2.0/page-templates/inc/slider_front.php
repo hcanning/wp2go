@@ -1,11 +1,14 @@
 
 <?php 
 $show = get_field('slider_hero'); 
+$theme = get_sub_field('theme_color'); 
 if($show == 'slider') :
 
     //slider open - show hide needs to be with while loop for a Group field - full/fixed width slider
     if( have_rows('slider_group') ): ?>
-        <?php while ( have_rows('slider_group') ) : the_row(); ?>
+        <?php while ( have_rows('slider_group') ) : the_row(); 
+        $theme = get_sub_field('theme_color'); 
+        ?>
             <?php
                 $sliderwidth = get_sub_field('slider_width');
                     if($sliderwidth === 'full'):

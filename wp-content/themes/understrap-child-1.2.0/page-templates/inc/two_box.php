@@ -5,16 +5,16 @@ if($show == 'show') :
 ?> 
 <?php $uniform_height = get_sub_field('uniform_height'); ?>
     <div class="row">
-        <div class="col">
             <?php if( have_rows('two_box_repeater') ): ?>
                 <?php while( have_rows('two_box_repeater') ) : the_row();?>
                 <?php 
                     $bg_color = get_sub_field('bg_color');
                     $border_color = get_sub_field('border_color'); 
                     $image = get_sub_field('img'); 
+                    $theme = get_sub_field('theme_color');
                 ?>
                     <div class="col-md-6 col-lg-6 mb-5 mb-lg-0 appear-animation mt-3" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                        <div class="two_box p-1 <?php the_sub_field('text_color'); ?>" style="<?php if($bg_color):?>background: <?php the_sub_field('bg_color'); ?><?php endif; ?>; <?php if($border_color):?>border: 1px solid <?php the_sub_field('border_color'); ?>;<?php endif; ?> ">
+                        <div class="two_box p-1 <?php the_sub_field('text_color'); ?> bg-<?php echo $theme; ?>" <?php if($border_color):?>border: 1px solid <?php the_sub_field('border_color'); ?>;<?php endif; ?> ">
                             <div class="box_body" style="min-height: <?php echo $uniform_height; ?>px;">
                                 <?php if( $image ):
                                         // Image variables.
@@ -43,7 +43,6 @@ if($show == 'show') :
    
                 <?php endwhile; ?>
             <?php endif; ?>    
-        </div>   
     </div>
 <?php
 endif;

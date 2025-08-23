@@ -13,8 +13,8 @@ if($show == 'show') :
 <div id="googlemaps" style="height:500px;"></div>
 
 <script>
-const API_KEY = "YOURKEY";
-const MAP_ID = "YOURID";
+const API_KEY = "AIzaSyDtoiGz2p2qh_7Lk4taJGlD-3E9joug5lQ";
+const MAP_ID = "53c47708ddd8c869552ea0ca";
 
 // Dynamically load Google Maps script with API key
 function loadGoogleMaps(callback) {

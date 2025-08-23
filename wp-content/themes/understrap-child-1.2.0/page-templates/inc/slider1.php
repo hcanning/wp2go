@@ -16,7 +16,6 @@
 					$ver = get_sub_field('caption_vertical_position');
 					$hor = get_sub_field('caption_horizontal_position');+
 					$overlay = get_sub_field('overlay');
-					$cpt = get_sub_field('caption_text_col');
 					$text_size_top = get_sub_field('text_size_top');
 					$text_size_center = get_sub_field('text_size_center');
 					$text_size_bottom = get_sub_field('text_size_bottom');
@@ -31,7 +30,7 @@
 							<div class="col-lg-6">
 								<div class="d-flex flex-column align-items-center py-5">
 									<?php if($caption_top) { ?>
-										<h3 class="position-relative text-<?php echo $text_size_top; ?>  line-height-5 font-weight-medium px-4 mb-2 appear-animation" style="color: <?php echo $cpt ?>;" data-appear-animation="fadeInDownShorter" data-plugin-options="{'minWindowWidth': 0}">
+										<h3 class="position-relative text-<?php echo $text_size_top; ?> text-<?php echo $theme; ?> line-height-5 font-weight-medium px-4 mb-2 appear-animation"  data-appear-animation="fadeInDownShorter" data-plugin-options="{'minWindowWidth': 0}">
 										<span class="position-absolute right-100pct top-50pct transform3dy-n50 opacity-3">
 										<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/slides/slide-title-border.png" class="w-auto appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="250" data-plugin-options="{'minWindowWidth': 0}" alt="" />
 									</span>
@@ -42,10 +41,10 @@
 										</h3>
 									<?php } ?>
 									<?php if($caption_center) { ?>
-									<h2 class="font-weight-extra-bold text-<?php echo $text_size_center; ?> mb-3 appear-animation" style="color: <?php echo $cpt; ?>;" data-appear-animation="blurIn" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}"><?php echo $caption_center?></h2>
+									<h2 class="font-weight-extra-bold text-<?php echo $theme; ?>  text-<?php echo $text_size_center; ?> mb-3 appear-animation"  data-appear-animation="blurIn" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}"><?php echo $caption_center?></h2>
 									<?php } ?>
 									<?php if($caption_bottom) { ?>
-									<p class="text-<?php echo $text_size_bottom; ?> font-weight-light opacity-7 text-center mb-0" style="color: <?php echo $cpt; ?>;" data-plugin-animated-letters data-plugin-options="{'startDelay': 1000, 'minWindowWidth': 0, 'animationSpeed': 30}"><?php echo $caption_bottom?></p>
+									<p class="text-<?php echo $text_size_bottom; ?> font-weight-light opacity-7 text-center text-<?php echo $theme; ?>  mb-0" style="color: <?php echo $cpt; ?>;" data-plugin-animated-letters data-plugin-options="{'startDelay': 1000, 'minWindowWidth': 0, 'animationSpeed': 30}"><?php echo $caption_bottom?></p>
 									<?php } ?>
 								</div> 
 							</div>

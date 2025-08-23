@@ -22,11 +22,6 @@
 			
 					<?php get_template_part( 'page-templates/inc/sidebar/video' ); ?> 	
 
-
-
-
-
-
 				<?php endif; ?> 
 		 <?php endwhile; ?>
 	<?php endif; ?>   

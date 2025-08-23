@@ -1,3 +1,6 @@
+	<?php if ( ! is_front_page() && ! is_home() ) : ?>
+			<h1><strong><?php the_title(); ?></strong></h1>
+	<?php endif; ?>
 	<?php if( have_rows('universal_content') ): ?>
 		<?php while( have_rows('universal_content') ): the_row(); ?>
 
@@ -124,6 +127,11 @@
 				<?php  elseif( get_row_layout() == 'tab_layout' ): ?>
 			
 					<?php get_template_part( 'page-templates/inc/tab' ); ?>	
+
+
+				<?php  elseif( get_row_layout() == 'text_panel_layout' ): ?>
+			
+					<?php get_template_part( 'page-templates/inc/text_panel' ); ?>	
 
 				<?php endif; ?> 
 		 <?php endwhile; ?>
