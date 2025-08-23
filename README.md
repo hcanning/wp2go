@@ -1,7 +1,7 @@
 # wp2go
 WordPress for Unis 
 
-Base Theme: Understrap with Child Theme - https://github.com/understrap/understrap-child
+Base Theme: Understrap with Child Theme - https://github.com/understrap/understrap-child - Bootstrap 5 enabled
 
 Video Walkthrough: https://u.pcloud.link/publink/show?code=wKA
 
