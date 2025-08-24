@@ -434,4 +434,29 @@ function my_custom_table_editor_toolbars( $toolbars ) {
     return $toolbars;
 }
 
+
+/**
+ * Remove unwanted parent theme page templates from the dropdown. Update Understrap with ease
+ *
+ * @param array $post_templates An array of page templates.
+ * @return array Modified array of page templates.
+ */
+function child_theme_remove_parent_templates( $post_templates ) {
+    // Replace 'page-templates/template-name.php' with the actual path and filename of the template you want to remove.
+    // You can find the path by inspecting the template file in the parent theme.
+    unset( $post_templates['page-templates/blank.php'] ); 
+    unset( $post_templates['page-templates/both-sidebarspage.php'] ); // Example for another template
+    unset( $post_templates['page-templates/empty.php'] ); 
+    unset( $post_templates['page-templates/fullwidthpage.php'] ); 
+    unset( $post_templates['page-templates/left-sidebarpage.php'] ); 
+    unset( $post_templates['page-templates/right-sidebarpage.php'] ); 
+    unset( $post_templates['page-templates/no-title.php'] ); 
+
+    return $post_templates;
+}
+add_filter( 'theme_templates', 'child_theme_remove_parent_templates', 10, 4 );
+
+
+
+
 ```
