@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages
  *
@@ -11,51 +12,68 @@
  */
 
 // Exit if accessed directly.
+
 defined( 'ABSPATH' ) || exit;
 
-get_header();
+// $bootstrap_version = get_theme_mod( 'understrap_bootstrap_version', 'bootstrap5' );
 
-$container = get_theme_mod( 'understrap_container_type' );
-
+// $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
+ get_header();
 ?>
+			<div role="main" class="main">
+				<?php include get_stylesheet_directory() . '/page-templates/inc/slider_front.php'; ?> 
+					<div class="container">
+						 <div class="row my-5">	
+							
+						
 
-<div class="wrapper" id="page-wrapper">
+						
+						<?php
+						if( get_field('layout') == 'left' ) {
+							?>
+							<div class="col-lg-3">
+								<?php get_template_part( 'page-templates/inc/_left' ); ?>
+							</div>
+							<div class="col-lg-9">
+								<?php get_template_part( 'page-templates/inc/_center' ); ?>
+							</div>
+							<?php
+						} elseif ( get_field('layout') == 'center') {
+							?>
+							<div class="col-lg-12">
+								<?php get_template_part( 'page-templates/inc/_center' ); ?>
+							</div>
+							<?php
+						} elseif ( get_field('layout') == 'right') {
+							?>
+							<div class="col-lg-9">
+								<?php get_template_part( 'page-templates/inc/_center' ); ?>
+							</div>
+							<div class="col-lg-3">
+								<?php get_template_part( 'page-templates/inc/_right' ); ?>
+							</div>
+							<?php
+						} elseif ( get_field('layout') == 'both') {
+							?>
+							<div class="col-lg-3">
+								<?php get_template_part( 'page-templates/inc/_left' ); ?>
+							</div>
+							<div class="col-lg-6">
+								<?php get_template_part( 'page-templates/inc/_center' ); ?>
+							</div>
+							<div class="col-lg-3">
+								<?php get_template_part( 'page-templates/inc/_right' ); ?>
+							</div>
+							<?php
+						} else {
+							echo 'Invalid layout specified';
+						}
+						?>
+						</div> <!--close row-->
+						
+					</div> <!-- close container -->
+		
 
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+			</div> <!--close main -->
 
-		<div class="row">
-
-			<?php
-			// Do the left sidebar check and open div#primary.
-			get_template_part( 'global-templates/left-sidebar-check' );
-			?>
-
-			<main class="site-main" id="main">
-
-				<?php
-				while ( have_posts() ) {
-					the_post();
-					get_template_part( 'loop-templates/content', 'page' );
-
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) {
-						comments_template();
-					}
-				}
-				?>
-
-			</main>
-
-			<?php
-			// Do the right sidebar check and close div#primary.
-			get_template_part( 'global-templates/right-sidebar-check' );
-			?>
-
-		</div><!-- .row -->
-
-	</div><!-- #content -->
-
-</div><!-- #page-wrapper -->
-
-<?php
-get_footer();
+<?php get_footer(); ?>
