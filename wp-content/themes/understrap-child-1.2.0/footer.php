@@ -19,26 +19,33 @@
 						</div>
 						<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
 							<h5 class="text-3 mb-3 opacity-7">LATEST POSTS</h5>
-							<ul class="list-unstyled mb-0">
-								<li class="mb-2 pb-1">
-									<a href="#">
-										<p class="text-3 text-color-light mb-0"><i class="fas fa-angle-right text-color-light"></i><strong class="ms-2 font-weight-semibold">Lorem ipsum dolor sit amet.</strong></p>
-										<p class="text-2 text-color-light opacity-8 mb-0">12:55 AM Dec 19th</p>
-									</a>
-								</li>
-								<li class="mb-2 pb-1">
-									<a href="#">
-										<p class="text-3 text-color-light mb-0"><i class="fas fa-angle-right text-color-light"></i><strong class="ms-2 font-weight-semibold">Ipsum dolor sit amet.</strong></p>
-										<p class="text-2 text-color-light opacity-8 mb-0">12:55 AM Dec 19th</p>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<p class="text-3 text-color-light mb-0"><i class="fas fa-angle-right text-color-light"></i><strong class="ms-2 font-weight-semibold">Lorem ipsum dolor sit amet.</strong></p>
-										<p class="text-2 text-color-light opacity-8 mb-0">12:55 AM Dec 19th</p>
-									</a>
-								</li>
-							</ul>
+							<?php
+								// Query last 3 posts from "news" category
+								$news_query = new WP_Query([
+									'category_name'  => 'news',
+									'posts_per_page' => 3,
+								]);
+
+								if ( $news_query->have_posts() ) : ?>
+									<ul class="list-unstyled mb-0">
+										<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
+											<li class="mb-2 pb-1 ">
+												<p class="text-3 text-light mb-0"><i class="fas fa-angle-right text-color-light"></i><strong class="ms-2 font-weight-semibold"><a href="<?php the_permalink(); ?>">
+													<?php
+														$title = get_the_title();
+														echo ( mb_strlen( $title ) > 25 ) 
+															? mb_substr( $title, 0, 25 ) . '...' 
+															: $title;
+													?>
+												</a></strong></p>
+												<div class="news-date text-light">
+													<small><?php echo get_the_date( 'M jS, Y - g:ia' ); ?></small>
+								</div>
+											</li>
+										<?php endwhile; ?>
+									</ul>
+								<?php wp_reset_postdata(); ?>
+							<?php endif; ?>
 						</div>
 						<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 							<h5 class="text-3 mb-3 opacity-7">CONTACT US</h5>
