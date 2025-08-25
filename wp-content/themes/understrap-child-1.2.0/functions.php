@@ -359,8 +359,7 @@ function my_toolbars( $toolbars )
         'underline',
         'link',
         'unlink',
-        'table',
-        'code'           // view/edit HTML source
+        'table'
     );
 
     // Keep Full, but still strip 'code' if you want
