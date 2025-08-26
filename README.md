@@ -25,6 +25,8 @@ Universal template code: [wp-content/themes/understrap-child-1.2.0/page-template
 9. Add a self contained newsletter plugin for marketing purposes to capture user interest.
 10. Consider hosting on WPEngine to avail of CDN, caching and optimized environment. Alternatively try pantheon.io.
 
+Note: 'plugin.min.js' added to wp-content to enable table toolbar in WYSIWYG.
+
 
 Featured files:
 
@@ -380,59 +382,49 @@ add_shortcode( 'custom_siblings', 'custom_siblings_shortcode' );
 // [custom_siblings ul_class="nav nav-list flex-column mb-2" li_class="nav-item" a_class="nav-link"]
 // [custom_*] will declare the classes as per function. Set classes in function blank for shortcode to set the classes.
 
-add_filter( 'acf/fields/wysiwyg/toolbars' , 'my_custom_table_editor_toolbars' );
-/**
- * Customizes the WYSIWYG toolbars available in ACF fields.
- *
- * This function defines a new toolbar named "Table Editor" with specific
- * formatting, table-related, and alignment buttons.
- *
- * @param array $toolbars The array of existing toolbars. 
- * @return array The modified array of toolbars.
- */
-function my_custom_table_editor_toolbars( $toolbars ) {
-
-    // Define the Table Editor toolbar with all the requested buttons
-    // The WYSIWYG editor's toolbars can have up to 4 rows of buttons.
-
-    // Row 1: Basic formatting, links, and text formatting options
+add_filter( 'acf/fields/wysiwyg/toolbars' , 'my_toolbars'  );
+function my_toolbars( $toolbars )
+{
+    // Add a new toolbar called "Table Editor"
+    $toolbars['Table Editor'] = array();
     $toolbars['Table Editor'][1] = array(
-        'bold',            // Bold text
-        'italic',          // Italic text
-        'link',            // Insert/Edit Link
-        'unlink',          // Remove Link
-        'strikethrough',   // Strikethrough text
-        'bullist',         // Bulleted List
-        'numlist',         // Numbered List
-        'blockquote',      // Block Quote
-        'alignleft',       // Align Left
-        'aligncenter',     // Align Center
-        'alignright',      // Align Right
-        'alignjustify',    // Justify Text
-        'styleselect',     // Styles dropdown (for custom classes)
-        'formatselect',    // Format select (for headings like h1-h6)
+        'formatselect',  // headings + paragraph dropdown
+        'bold',
+        'italic',
+        'underline',
+        'link',
+        'unlink',
+        'table',
+        'code'           // view/edit HTML source
     );
 
-    // Row 2: Table creation and manipulation buttons
-    $toolbars['Table Editor'][2] = array(
-        'table',           // Insert/Edit Table
-        'tabledelete',     // Delete Table
-        'tableprops',      // Table Properties
-        'tablerowprops',   // Table Row Properties
-        'tablecellprops',  // Table Cell Properties
-        'insertrowbefore', // Insert Row Before
-        'insertrowafter',  // Insert Row After
-        'deleterow',       // Delete Row
-        'insertcolbefore', // Insert Column Before
-        'insertcolafter',  // Insert Column After
-        'deletecol',       // Delete Column
-        'mergecells',      // Merge Table Cells
-        'splitcells'       // Split Table Cells
-    );
+    // Keep Full, but still strip 'code' if you want
+    if( isset($toolbars['Full'][2]) && ($key = array_search('code', $toolbars['Full'][2])) !== false ) {
+        unset( $toolbars['Full'][2][$key] );
+    }
 
-    // Return the updated toolbars array to ACF
     return $toolbars;
 }
+
+function add_the_table_button( $buttons ) {
+    if ( ! in_array( 'table', $buttons ) ) {
+        array_push( $buttons, 'separator', 'table' );
+    }
+    if ( ! in_array( 'code', $buttons ) ) {
+        array_push( $buttons, 'separator', 'code' );
+    }
+    return $buttons;
+}
+add_filter( 'mce_buttons', 'add_the_table_button' );
+
+function add_the_table_plugin( $plugins ) {
+    // Make sure you’re loading the TinyMCE table + code plugins correctly
+    $plugins['table'] = content_url() . '/plugin.min.js';
+    $plugins['code']  = content_url() . '/code-plugin.min.js';
+    return $plugins;
+}
+add_filter( 'mce_external_plugins', 'add_the_table_plugin' );
+
 
 
 /**
@@ -455,8 +447,5 @@ function child_theme_remove_parent_templates( $post_templates ) {
     return $post_templates;
 }
 add_filter( 'theme_templates', 'child_theme_remove_parent_templates', 10, 4 );
-
-
-
 
 ```
